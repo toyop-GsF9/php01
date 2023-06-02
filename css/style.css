@@ -1,0 +1,25 @@
+/* スタイルの定義 */
+h1 {
+	text-align: center;
+}
+
+form {
+	width: 300px;
+	margin: 0 auto;
+}
+
+label {
+	display: block;
+	margin-top: 10px;
+}
+
+input[type="email"],
+input[type="password"] {
+	width: 100%;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+button {
+	margin-top: 10px;
+}
