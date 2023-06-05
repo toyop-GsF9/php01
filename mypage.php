@@ -1,15 +1,10 @@
 <?php
-
-// データ受け取り
-include("functions.php");
 // セッションの開始
 session_start();
+// データ受け取り
+include("functions.php");
+check_session_id();
 
-// ログインしていない場合はログインページにリダイレクト
-if (!isset($_SESSION['user_id'])) {
-  header('Location: login.php');
-  exit;
-}
 
 // ユーザーIDの取得
 $user_id = $_SESSION['user_id'];
@@ -51,7 +46,8 @@ $user_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tr>
         <?php endforeach; ?>
     </table>
+    <a href="input00.php">子供情報入力画面</a>
 	<a href="input01.php">服入力画面</a>
+    <a href="logout.php">logout</a>
 </body>
 </html>
-?>

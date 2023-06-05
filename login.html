@@ -6,6 +6,105 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f9f9f9;
+			margin: 0;
+			padding: 20px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		form {
+			max-width: 400px;
+			margin: 0 auto;
+			background-color: #fff;
+			border-radius: 8px;
+			padding: 20px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		input[type="email"],
+		input[type="password"] {
+			width: 90%;
+			padding: 10px;
+
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			margin-bottom: 20px;
+		}
+
+		input[type="email"]:focus,
+		input[type="password"]:focus {
+			border-color: #ff6f00;
+			outline: none;
+		}
+
+		button[type="submit"] {
+			background-color: #ff6f00;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			padding: 10px 20px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		button[type="submit"]:hover {
+			background-color: #f7b258;
+		}
+
+		.register-link {
+			text-align: center;
+			margin-top: 20px;
+		}
+
+		.register-link a {
+			color: #ff6f00;
+			text-decoration: none;
+		}
+	</style>
+	<!-- <script src="script.js"></script> -->
+</head>
+
+<body>
+	<h1>子供服管理アプリ - ログイン</h1>
+	<form id="loginForm" method="post" action="login.php">
+		<label for="email">メールアドレス:</label>
+		<input type="email" id="email" name="email" required>
+
+		<label for="password">パスワード:</label>
+		<input type="password" id="password" name="password" required>
+
+		<button type="submit">ログイン</button>
+	</form>
+
+	<div class="register-link">
+		<a href="register.html">アカウントをお持ちでない方はこちらから登録</a>
+	</div>
+</body>
+
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<title>子供服管理アプリ - ログイン</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<script src="script.js"></script>
 </head>
@@ -23,4 +122,4 @@
 	</form>
 </body>
 
-</html>
+</html> -->

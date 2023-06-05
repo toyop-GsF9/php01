@@ -1,12 +1,15 @@
 <?php
+
 // データ受け取り
 include("functions.php");
 
 // セッションの開始
 session_start();
+check_session_id();
 
 // ユーザーIDの取得
 $user_id = $_SESSION['user_id'];
+
 
 // フォームデータの受け取り
 $size = $_POST['size'];
@@ -25,6 +28,7 @@ $img_dir = './data/' . $unique_id . '_' . $img_name;
 // 画像を保存（一時保存先からdataへ）
 move_uploaded_file($img_tmp, $img_dir);
 
+
 if (
   !isset($_POST['size']) || $_POST['size'] === '' ||
   !isset($_POST['maker']) || $_POST['maker'] === '' ||
@@ -37,6 +41,8 @@ if (
 
 // DB接続
 $pdo = connect_to_db();
+// var_dump($pdo);
+// exit();
 
 // データ登録のSQL
 $sql = 'INSERT INTO PHP_SSK_clothes (user_id, size, maker, type, date, img, created_at, updated_at) VALUES (:user_id, :size, :maker, :type, :date, :img, NOW(), NOW())';
@@ -47,7 +53,14 @@ $stmt->bindValue(':maker', $maker, PDO::PARAM_STR);
 $stmt->bindValue(':type', $type, PDO::PARAM_STR);
 $stmt->bindValue(':date', $date, PDO::PARAM_STR);
 $stmt->bindValue(':img', $img_dir, PDO::PARAM_STR);
-$stmt->execute();
+
+// SQL実行（実行に失敗すると `sql error ...` が出力される）
+try {
+  $status = $stmt->execute();
+} catch (PDOException $e) {
+  echo json_encode(["sql error" => "{$e->getMessage()}"]);
+  exit();
+}
 
 // データ入力画面に移動する
 header("Location: input01.php");
