@@ -45,7 +45,7 @@ $pdo = connect_to_db();
 // exit();
 
 // データ登録のSQL
-$sql = 'INSERT INTO PHP_SSK_clothes (user_id, size, maker, type, date, img, created_at, updated_at) VALUES (:user_id, :size, :maker, :type, :date, :img, NOW(), NOW())';
+$sql = 'INSERT INTO PHP_SSK_clothes (user_id, size, maker, type, date, img, created_at, updated_at,clothes_id) VALUES (:user_id, :size, :maker, :type, :date, :img, NOW(), NOW(),NULL)';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 $stmt->bindValue(':size', $size, PDO::PARAM_STR);

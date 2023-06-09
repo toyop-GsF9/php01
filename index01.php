@@ -90,6 +90,35 @@
 		.hero-button:hover {
 			background-color: #cc0000;
 		}
+
+		/* モーダルCSS */
+		/* .modal-container {
+  		position: relative;
+		}
+
+		.modal-background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		display: none;
+		}
+
+		.modal {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 8px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		display: none;
+		} */
+		/* ここまで */
+
 	</style>
 </head>
 
@@ -115,6 +144,41 @@
 		</div>
 	</div>
 
+				<!-- <div class="modal-container">
+			<button id="modal-trigger">ログイン</button>
+			<div class="modal-background"></div>
+			<div class="modal"> -->
+				<!-- ログインフォームのHTMLコードをここに追加 -->
+				<!-- <form id="loginForm" method="post" action="login.php">
+				<label for="email">メールアドレス:</label>
+				<input type="email" id="email" name="email" required>
+
+				<label for="password">パスワード:</label>
+				<input type="password" id="password" name="password" required>
+
+				<button type="submit">ログイン</button>
+				</form>
+
+			</div>
+			</div>
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {
+				var modalTrigger = document.getElementById("modal-trigger");
+				var modalBackground = document.querySelector(".modal-background");
+				var modal = document.querySelector(".modal");
+
+				modalTrigger.addEventListener("click", function() {
+					modalBackground.style.display = "block";
+					modal.style.display = "block";
+				});
+
+				modalBackground.addEventListener("click", function() {
+					modalBackground.style.display = "none";
+					modal.style.display = "none";
+				});
+				});
+
+			</script> -->
 </body>
 
 </html>

@@ -7,6 +7,7 @@ check_session_id();
 $pdo = connect_to_db();
 
 $user_id = $_SESSION['user_id'];
+
 // 子供データ用
 $sql = 'SELECT * FROM PHP_SSK_child WHERE user_id =:user_id ';
 
@@ -20,6 +21,10 @@ try {
   exit();
 }
 $child_data= $child_stmt->fetchALL(PDO::FETCH_ASSOC);
+
+//   $_SESSION['child_id'] = $child_data['child_id'];
+//   var_dump($child_data[0]["child_id"]);
+//   exit();
 
 // 子供服データ用
 $cl_sql = 'SELECT * FROM PHP_SSK_clothes WHERE user_id =:user_id ';
@@ -59,58 +64,66 @@ usort($clothes_data, function ($a, $b) use ($sortColumn) {
 <html>
 <head>
     <title>データ表示ページ</title>
+  
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 20px;
-        }
-        
-        h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            align-items: flex-start;
-        }
-        
-        .child-item,
-        .clothes-item {
-            flex-basis: 33%;
-            padding: 10px;
-        }
-        
-        .child-image,
-        .clothes-image {
-            max-width: 100%;
-            height: auto;
-            object-fit: cover;
-            margin-right: 10px;
-        }
-        
-        select {
-            margin-bottom: 10px;
-            padding: 5px;
-            font-size: 16px;
-        }
-        
-        a {
-            display: block;
-            margin-top: 10px;
-            color: #333;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        
-        a:hover {
-            color: #ff6f00;
-        }
-    </style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    
+    .child-item,
+    .clothes-item {
+        flex-basis: 33%;
+        padding: 10px;
+        box-sizing: border-box; /* 追加: ボックスサイズを要素の全体として指定 */
+    }
+    
+    .child-item p {
+        margin: 0; /* 追加: 段落のマージンをリセット */
+        line-height: 1.5; /* 追加: 行の高さを指定 */
+    }
+    
+    .child-image,
+    .clothes-image {
+        max-width: 100%;
+        height: 300px; /* 高さを統一する値に指定 */
+        object-fit: cover;
+        margin-right: 10px;
+    }
+    
+    select {
+        margin-bottom: 10px;
+        padding: 5px;
+        font-size: 16px;
+    }
+    
+    a {
+        display: block;
+        margin-top: 10px;
+        color: #333;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    
+    a:hover {
+        color: #ff6f00;
+    }
+</style>
 </head>
 <body>
     <h2>子供データ</h2>
@@ -118,8 +131,9 @@ usort($clothes_data, function ($a, $b) use ($sortColumn) {
         <?php foreach ($child_data as $children) : ?>
         <!-- PHP_SSK_childテーブルのデータ表示 -->
         <div class="child-item">
-            
+             <a href="child_edit.php?child_id=<?php echo $children['child_id']; ?>">
             <!-- <img class="child-image" src="<?php echo $children['img']; ?>" alt="Child Image"> -->
+            <div class="child-image" style="background-image: url('<?php echo $children['img']; ?>');"></div>
             <p>名前<?php echo ' '.$children['name']; ?></p>
             <p>誕生日<?php echo ' '.$children['birthday']; ?></p>
             <p>身長<?php echo ' '.$children['height']; ?></p>
@@ -128,7 +142,9 @@ usort($clothes_data, function ($a, $b) use ($sortColumn) {
         </div>
         <?php endforeach; ?>
     </div>
+
     <a href="input00.php">子供情報入力画面</a>
+     <!-- <a href="child_edit.php">子供情報更新画面</a> -->
     <hr>
     
     <!-- PHP_SSK_clothesテーブルのデータ表示 -->
@@ -152,6 +168,7 @@ usort($clothes_data, function ($a, $b) use ($sortColumn) {
     <div class="container"> 
         <?php foreach ($clothes_data as $clothes) : ?>
         <div class="clothes-item">
+            <a href="clothes_edit.php?clothes_id=<?php echo $clothes['clothes_id']; ?>">
             <img class="clothes-image" src="<?php echo $clothes['img']; ?>" alt="Clothes Image">
             <p>サイズ<?php echo $clothes['size']; ?></p>
             <p>メーカー<?php echo $clothes['maker']; ?></p>

@@ -35,6 +35,7 @@ if (!$user || !password_verify($password, $user['password'])){
   $_SESSION = array();
   $_SESSION['session_id'] = session_id();
   $_SESSION['user_id'] = $user['ID'];
+  // $_SESSION['child_id'] = $user['child_id'];
   // $_SESSION['is_admin'] = $user['is_admin'];
   // $_SESSION['username'] = $user['username'];
   header("Location:childpage.php");

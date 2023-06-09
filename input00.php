@@ -7,8 +7,6 @@ include("functions.php");
 check_session_id();
 
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +57,8 @@ check_session_id();
 
     input[type="text"],
     input[type="date"],
-    input[type="number"] {
+    input[type="number"],
+    input[type="file"]  {
       width: 90%;
       padding: 10px;
       border: 1px solid #ccc;
@@ -83,7 +82,8 @@ check_session_id();
 </head>
 
 <body>
-  <form action="create00.php" method="POST" enctype="multipart/form-data">
+  <form action="create03.php" method="POST" enctype="multipart/form-data">
+    
     <fieldset>
       <legend>子供情報登録</legend>
       <a href="index.php">管理画面</a>
@@ -100,8 +100,12 @@ check_session_id();
         体重: <input type="number" name="weight" max="30.0" value="2.0" step="0.1">
       </div>
       <div>
+        画像: <input type="file" name="img" accept=".jpg,.jpeg,.png">
+      </div> 
+      <div>
         <button type="submit">入力</button>
       </div>
+      <a href="childpage.php">管理ページ</a>
       <a href="logout.php">logout</a>
     </fieldset>
   </form>

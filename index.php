@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -45,17 +45,25 @@
   <fieldset>
     <legend>子供服管理アプリ</legend>
     <a href="index01.php">仮インデックス画面</a>
+    <a href="register.html">登録画面</a>
+    <a href="login.html">ログイン画面</a>
+    <a href="logout.php">ログアウト</a>
     <a href="input00.php">子供情報入力画面</a>
     <a href="input01.php">子供服入力画面</a>
     <a href="childpage.php">子供画面</a>
-    <a href="login.html">ログイン画面</a>
-    <a href="register.html">登録画面</a>
-    <a href="logout.php">ログアウト</a>
+    <a href="child_edit.php">子供情報更新</a>
+    <a href="clothes_edit.php">服情報更新</a>
+   
   </fieldset>
 </body>
 
-</html>
+</html> -->
 
+<?php
+header("Location:login.html");
+exit();
+
+?>
 
 <!-- <!DOCTYPE html>
 <html lang="ja">
