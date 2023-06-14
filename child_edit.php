@@ -67,6 +67,11 @@ $child_data= $child_stmt->fetchAll(PDO::FETCH_ASSOC);
       font-size: 16px;
     }
 
+     img {
+      max-width: 100%;
+      height: auto;
+    }
+
     a:hover {
       color: #ff6f00;
     }
@@ -105,7 +110,7 @@ $child_data= $child_stmt->fetchAll(PDO::FETCH_ASSOC);
   <form action="child_update.php" method="POST" enctype="multipart/form-data">
     
     <fieldset>
-      <legend>子供情報更新</legend>
+      <legend>子供情報詳細・更新ページ</legend>
       <a href="index.php">管理画面</a>
       <div>
         お名前: <input type="text" name="name" value="<?= $child_data[0]["name"] ?>">
@@ -122,6 +127,9 @@ $child_data= $child_stmt->fetchAll(PDO::FETCH_ASSOC);
       <div>
         画像: <input type="file" name="img" value="<?= $child_data[0]["img"] ?>"accept=".jpg,.jpeg,.png">
       </div> 
+      <div>
+        現在の画像: <img src="<?= $child_data[0]["img"] ?>" alt="現在の画像">
+      </div>
 	  <div>
       <input type="hidden" name="child_id" value="<?= $child_data[0]["child_id"] ?>">
     </div>
